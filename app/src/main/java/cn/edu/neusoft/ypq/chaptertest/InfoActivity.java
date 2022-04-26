@@ -24,6 +24,7 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+        // 添加传递的数据到TextView
         init();
     }
 
@@ -61,7 +62,7 @@ public class InfoActivity extends AppCompatActivity {
         });
         // 注册广播接收器
         registerReceiver(mNetReceiver , intentFilter);
-        Toast.makeText(this, "广播接收器已注册", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this , "广播接收器已注册" , Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -69,6 +70,6 @@ public class InfoActivity extends AppCompatActivity {
         super.onStop();
         // 注销广播接收器
         unregisterReceiver(mNetReceiver);
-        Toast.makeText(this, "广播接收器已注销", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this , "广播接收器已注销" , Toast.LENGTH_SHORT).show();
     }
 }
