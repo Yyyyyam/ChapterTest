@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +67,12 @@ public class InfoActivity extends AppCompatActivity {
         });
         // 注册广播接收器
         registerReceiver(mNetReceiver , intentFilter);
-        Toast.makeText(this , "广播接收器已注册" , Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(InfoActivity.this , "广播接收器已注册" , Toast.LENGTH_SHORT).show();
+            }
+        }, 2000);
     }
 
     @Override
