@@ -36,7 +36,7 @@ public class InfoActivity extends AppCompatActivity {
         TextView tvByte = findViewById(R.id.info_tv_byte);
         tvByte.setText("byte:" + b);
         TextView tvSerial = findViewById(R.id.info_tv_serial);
-        tvSerial.setText("Serializable:姓名-" + item + ",编号-" + item.getPosition());
+        tvSerial.setText("Serializable:姓名-" + item.getName() + ",编号-" + item.getPosition());
     }
 
     @Override
