@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,7 +48,6 @@ public class InfoActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         mNetReceiver = new NetReceiver();
-        registerReceiver(mNetReceiver , intentFilter);
         // 实现广播的接口功能
         mNetReceiver.changeState(new NetReceiver.OnNetWorkChangeListener() {
             @Override
@@ -59,11 +59,16 @@ public class InfoActivity extends AppCompatActivity {
                 }
             }
         });
+        // 注册广播接收器
+        registerReceiver(mNetReceiver , intentFilter);
+        Toast.makeText(this, "广播接收器已注册", Toast.LENGTH_SHORT);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        // 注销广播接收器
         unregisterReceiver(mNetReceiver);
+        Toast.makeText(this, "广播接收器已注销", Toast.LENGTH_SHORT);
     }
 }
