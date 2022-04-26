@@ -61,7 +61,7 @@ public class InfoActivity extends AppCompatActivity {
         });
         // 注册广播接收器
         registerReceiver(mNetReceiver , intentFilter);
-        Toast.makeText(this, "广播接收器已注册", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "广播接收器已注册", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -69,6 +69,6 @@ public class InfoActivity extends AppCompatActivity {
         super.onStop();
         // 注销广播接收器
         unregisterReceiver(mNetReceiver);
-        Toast.makeText(this, "广播接收器已注销", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "广播接收器已注销", Toast.LENGTH_SHORT).show();
     }
 }
