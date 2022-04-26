@@ -56,23 +56,14 @@ public class InfoActivity extends AppCompatActivity {
             public void changeState(NetworkInfo info) {
                 if (null != info && info.isConnected()) {
                     tvNet.setText("当前网络状态:" + info.getTypeName());
-                    Toast.makeText(InfoActivity.this , "当前网络状态:" + info.getTypeName()
-                            , Toast.LENGTH_SHORT).show();
                 } else {
                     tvNet.setText("当前网络状态:无网络");
-                    Toast.makeText(InfoActivity.this , "当前网络状态:无网络" ,
-                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
         // 注册广播接收器
         registerReceiver(mNetReceiver , intentFilter);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(InfoActivity.this , "广播接收器已注册" , Toast.LENGTH_SHORT).show();
-            }
-        }, 2000);
+        Toast.makeText(this , "广播接收器已注册" , Toast.LENGTH_SHORT).show();
     }
 
     @Override
