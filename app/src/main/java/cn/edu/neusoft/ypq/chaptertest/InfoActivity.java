@@ -55,8 +55,12 @@ public class InfoActivity extends AppCompatActivity {
             public void changeState(NetworkInfo info) {
                 if (null != info && info.isConnected()) {
                     tvNet.setText("当前网络状态:" + info.getTypeName());
+                    Toast.makeText(InfoActivity.this , "当前网络状态:" + info.getTypeName()
+                            , Toast.LENGTH_SHORT).show();
                 } else {
                     tvNet.setText("当前网络状态:无网络");
+                    Toast.makeText(InfoActivity.this , "当前网络状态:无网络" ,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
