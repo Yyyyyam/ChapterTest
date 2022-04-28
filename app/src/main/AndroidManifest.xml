@@ -26,15 +26,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <!--静态注册-->
-        <receiver
-            android:name=".NetReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
     </application>
 
-    <!--允许读取网络状态-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 </manifest>
