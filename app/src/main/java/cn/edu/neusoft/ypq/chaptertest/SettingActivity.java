@@ -41,9 +41,8 @@ public class SettingActivity extends AppCompatActivity {
                 R.drawable.transportation_and_vehicle_03 , R.drawable.transportation_and_vehicle_04 ,
                 R.drawable.transportation_and_vehicle_05 , R.drawable.transportation_and_vehicle_06 ,
                 R.drawable.transportation_and_vehicle_07 , R.drawable.transportation_and_vehicle_08 ,
-                R.drawable.transportation_and_vehicle_09 , R.drawable.transportation_and_vehicle_10};
-        String[] settingHead = new String[]{"WiFi" , "蓝牙" , "应用" , "亮度" , "声音" ,
-                "按键" , "电池" , "储存" , "安全" , "账号"};
+                R.drawable.transportation_and_vehicle_09 };
+        String[] settingHead = getResources().getStringArray(R.array.item_array);
 
         BaseAdapter adapter = new BaseAdapter() {
             @Override
@@ -89,11 +88,11 @@ public class SettingActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 TextView tvSetting = view.findViewById(R.id.tv_setting_name);
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.detail, new SettingDetailFragment(tvSetting.getText().toString())).commit();
+                ft.replace(R.id.detail, new SettingDetailFragment(tvSetting.getText().toString(), position)).commit();
             }
         });
 
 
-        getSupportFragmentManager().beginTransaction().add(R.id.detail, new SettingDetailFragment("WiFi")).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.detail, new SettingDetailFragment("WiFi" , 0)).commit();
     }
 }
