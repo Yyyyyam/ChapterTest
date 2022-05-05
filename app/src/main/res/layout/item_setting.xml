@@ -5,8 +5,8 @@
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/item_setting_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_margin="8dp"
         android:src="@mipmap/ic_launcher"/>
 
