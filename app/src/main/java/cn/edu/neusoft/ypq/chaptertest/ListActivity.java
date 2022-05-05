@@ -96,10 +96,14 @@ public class ListActivity extends AppCompatActivity {
                     // 隐式
                     intent.setAction("infoView");
                     startActivity(intent);
-                } else {
-                    HashMap<String, Object> map = (HashMap<String, Object>) parent.getItemAtPosition(position);
-                    Toast.makeText(ListActivity.this , "姓名:" + map.get(KEY_NAME)
-                            + ",序号:"+map.get(KEY_NUM) , Toast.LENGTH_SHORT).show();
+                } else if (position == 3){
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, SettingActivity.class);
+                    startActivity(intent);
+                } else if (position == 4) {
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, ContentActivity.class);
+                    startActivity(intent);
                 }
             }
         });

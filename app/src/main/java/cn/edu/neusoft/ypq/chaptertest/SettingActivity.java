@@ -33,8 +33,10 @@ public class SettingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("bundle");
-        String text = bundle.getString("text");
-        Toast.makeText(this , "上一个界面传递的数据是:" + text , Toast.LENGTH_SHORT).show();
+        if ( bundle != null) {
+            String text = bundle.getString("text");
+            Toast.makeText(this , "上一个界面传递的数据是:" + text , Toast.LENGTH_SHORT).show();
+        }
 
         ListView listView = findViewById(R.id.list_head);
         int[] pid = new int[]{R.drawable.transportation_and_vehicle_01 , R.drawable.transportation_and_vehicle_02 ,
