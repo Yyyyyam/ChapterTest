@@ -1,3 +1,109 @@
 <resources>
     <string name="app_name">ChapterTest</string>
+
+    <string-array name="item_array">
+        <item>WLAN和互联网</item>
+        <item>蓝牙和设备连接</item>
+        <item>应用和通知</item>
+        <item>显示</item>
+        <item>声音和震动</item>
+        <item>按键和手势</item>
+        <item>电池</item>
+        <item>储存</item>
+        <item>安全和锁屏</item>
+    </string-array>
+
+    <string-array name="wifi_array" >
+        <item>WLAN</item>
+        <item>SIM卡和移动网络</item>
+        <item>流量使用情况</item>
+        <item>热点和网络共享</item>
+        <item>飞行模式</item>
+        <item>VPN</item>
+        <item>私人DNS</item>
+    </string-array>
+
+    <string-array name="bluetooth_array">
+        <item>USB</item>
+        <item>与新设备配对</item>
+        <item>之前连接的设备</item>
+        <item>可被发现</item>
+        <item>连接偏好设置</item>
+    </string-array>
+
+    <string-array name="app_array">
+        <item>通知</item>
+        <item>默认应用</item>
+        <item>应用权限</item>
+        <item>联网控制</item>
+        <item>紧急警报</item>
+        <item>特殊应用权限</item>
+    </string-array>
+
+    <string-array name="view_array">
+        <item>自动调节亮度</item>
+        <item>休眠</item>
+        <item>夜间模式</item>
+        <item>阅读模式</item>
+        <item>屏幕颜色模式</item>
+        <item>视频显示增强</item>
+        <item>凹形区域显示</item>
+        <item>全屏应用显示方式</item>
+        <item>熄屏显示</item>
+    </string-array>
+
+    <string-array name="sound_array">
+        <item>铃声音量</item>
+        <item>媒体音量</item>
+        <item>闹钟饮料</item>
+        <item>勿扰模式</item>
+        <item>杜比全景声</item>
+        <item>耳机模式</item>
+        <item>手机铃声</item>
+        <item>短信铃声</item>
+        <item>默认通知提示音</item>
+        <item>有来电铃时节奏</item>
+        <item>触摸震动</item>
+        <item>震动强度</item>
+        <item>触摸提示音</item>
+    </string-array>
+
+    <string-array name="key_array">
+        <item>三段式开关</item>
+        <item>虚拟按键</item>
+        <item>快捷手势</item>
+        <item>快速开启相机</item>
+        <item>快速开启助手应用</item>
+    </string-array>
+
+    <string-array name="battery_array">
+        <item>应用正常运行中</item>
+        <item>省电模式</item>
+        <item>电池优化</item>
+        <item>智能电池管理</item>
+        <item>上次充满电</item>
+        <item>上次充满电后亮屏时间</item>
+    </string-array>
+
+    <string-array name="storage_array">
+        <item>储存空间管理器</item>
+        <item>照片和视频</item>
+        <item>音乐和音频</item>
+        <item>游戏</item>
+        <item>影视应用</item>
+        <item>其他应用</item>
+        <item>应用双开</item>
+        <item>文件</item>
+        <item>系统</item>
+    </string-array>
+
+    <string-array name="safe_array">
+        <item>屏幕锁定</item>
+        <item>指纹</item>
+        <item>人脸解锁</item>
+        <item>位置信息</item>
+        <item>显示密码</item>
+        <item>紧急救援</item>
+    </string-array>
+
 </resources>
