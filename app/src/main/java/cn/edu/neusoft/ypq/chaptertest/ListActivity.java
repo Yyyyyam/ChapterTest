@@ -55,7 +55,7 @@ public class ListActivity extends AppCompatActivity {
         ListView listName = findViewById(R.id.list_name);
 
         List<Map<String, Object>> listItems = new ArrayList<>();
-        for (int i = 0 ; i < 5 ; i++) {
+        for (int i = 0 ; i < 6 ; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put(KEY_NAME , "颜培琦");
             map.put(KEY_NUM , i);
@@ -103,6 +103,10 @@ public class ListActivity extends AppCompatActivity {
                 } else if (position == 4) {
                     Intent intent = new Intent();
                     intent.setClass(ListActivity.this, ContentActivity.class);
+                    startActivity(intent);
+                } else if (position == 5) {
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, ThreadActivity.class);
                     startActivity(intent);
                 }
             }
