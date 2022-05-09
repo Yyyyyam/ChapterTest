@@ -25,10 +25,23 @@ import java.util.Map;
 public class SettingDetailFragment extends Fragment {
 
     private String mTitle;
+    private Integer position;
     private ListView mListView;
 
-    public SettingDetailFragment(String title) {
+    private int[] arrayId = new int[] {R.array.wifi_array , R.array.bluetooth_array , R.array.app_array ,
+            R.array.view_array , R.array.sound_array , R.array.key_array , R.array.battery_array ,
+            R.array.storage_array , R.array.safe_array};
+    int[] pid = new int[]{R.drawable.transportation_and_vehicle_01 , R.drawable.transportation_and_vehicle_02 ,
+            R.drawable.transportation_and_vehicle_03 , R.drawable.transportation_and_vehicle_04 ,
+            R.drawable.transportation_and_vehicle_05 , R.drawable.transportation_and_vehicle_06 ,
+            R.drawable.transportation_and_vehicle_07 , R.drawable.transportation_and_vehicle_08 ,
+            R.drawable.transportation_and_vehicle_09 , R.drawable.transportation_and_vehicle_10 ,
+            R.drawable.transportation_and_vehicle_01 , R.drawable.transportation_and_vehicle_02 ,
+            R.drawable.transportation_and_vehicle_03 , R.drawable.transportation_and_vehicle_04 };
+
+    public SettingDetailFragment(String title, Integer position) {
         mTitle = title;
+        this.position = position;
     }
 
     @Nullable
@@ -38,19 +51,12 @@ public class SettingDetailFragment extends Fragment {
         TextView tvTitle = view.findViewById(R.id.setting_detail_title);
         tvTitle.setText(mTitle);
         mListView = view.findViewById(R.id.list_detail);
-        if ("亮度".equals(mTitle)) {
-            loadData();
-        }
+        loadData();
         return view;
     }
 
     private void loadData() {
-        String[] items = new String[]{"系统亮度" , "休眠时间" , "夜间模式" , "阅读模式" ,
-                "屏幕颜色" , "显示增强" , "区域显示" , "显示方式"};
-        int[] pid = new int[]{R.drawable.transportation_and_vehicle_01 , R.drawable.transportation_and_vehicle_02 ,
-                R.drawable.transportation_and_vehicle_03 , R.drawable.transportation_and_vehicle_04 ,
-                R.drawable.transportation_and_vehicle_05 , R.drawable.transportation_and_vehicle_06 ,
-                R.drawable.transportation_and_vehicle_07 , R.drawable.transportation_and_vehicle_08 };
+        String[] items = getResources().getStringArray(arrayId[position]);
 
         List<Map<String, Object>> listItems = new ArrayList<>();
         for (int i=0; i<items.length; i++) {
