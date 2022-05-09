@@ -22,6 +22,8 @@
         <activity android:name=".SettingActivity"/>
         <activity android:name=".ContentActivity"/>
         <activity android:name=".ThreadActivity"/>
+        <activity android:name=".ServiceActivity"/>
+        <service android:name=".service.MusicService"/>
         <activity android:name=".InfoActivity">
             <intent-filter>
                 <action android:name="infoView"/>
