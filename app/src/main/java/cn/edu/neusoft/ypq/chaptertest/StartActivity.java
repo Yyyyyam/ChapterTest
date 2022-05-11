@@ -69,10 +69,10 @@ public class StartActivity extends AppCompatActivity {
         tvMemNow.setText("当前可用内存:" + ListActivity.startService.getAvailMem());
         tvMemTotal.setText("总可用内存:" + ListActivity.startService.totalMemory);
 
-        tvPreSystemLight.setText("预设亮度:"+pre_system_light);
-        tvPreVoiceCall.setText("预设通话音量:"+pre_voice_call);
-        tvPreStreamRing.setText("预设铃声音量:"+pre_stream_ring);
-        tvPreStreamMusic.setText("预设媒体音量:"+pre_stream_music);
+        tvPreSystemLight.setText("预设亮度:" + pre_system_light);
+        tvPreVoiceCall.setText("预设通话音量:" + pre_voice_call);
+        tvPreStreamRing.setText("预设铃声音量:" + pre_stream_ring);
+        tvPreStreamMusic.setText("预设媒体音量:" + pre_stream_music);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         initSetting();
