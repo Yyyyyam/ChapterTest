@@ -69,7 +69,7 @@ public class MusicService extends Service {
         if (player != null) {
             if (isPlaying) {
                 player.pause();
-                state = 2;
+                state = MUSIC_PAUSE_STATE;
             } else {
                 player.start();
                 state = 1;

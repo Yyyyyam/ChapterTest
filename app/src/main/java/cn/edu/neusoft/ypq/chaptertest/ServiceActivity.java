@@ -130,8 +130,6 @@ public class ServiceActivity extends AppCompatActivity {
         super.onStart();
         Intent intent = new Intent(ServiceActivity.this, MusicService.class);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-//        musicService.initState();
-
     }
 
     @Override
