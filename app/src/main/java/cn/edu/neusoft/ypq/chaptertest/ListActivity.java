@@ -1,9 +1,13 @@
 package cn.edu.neusoft.ypq.chaptertest;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +33,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.edu.neusoft.ypq.chaptertest.bean.ItemSelected;
+import cn.edu.neusoft.ypq.chaptertest.service.MusicService;
+import cn.edu.neusoft.ypq.chaptertest.service.StartService;
+
 /**
  * 作者:颜培琦
  * 时间:2022/4/20
@@ -40,20 +48,42 @@ public class ListActivity extends AppCompatActivity {
     public static final int IMAGE_LOADED = 0x110;
     public static final String KEY_NAME = "name";
     public static final String KEY_NUM = "num";
+    public static final String KEY_ITEM = "item";
+    public static final String KEY_INT = "int";
+    public static final String KEY_BYTE = "byte";
     private int[] mStatues = new int[]{0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+    private boolean bound = false;
+
+    public static StartService startService;
+
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            StartService.StartBinder binder = (StartService.StartBinder) service;
+            startService = binder.getService();
+            bound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            bound = false;
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        Intent intent = new Intent(ListActivity.this, StartService.class);
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
         ListView listName = findViewById(R.id.list_name);
 
         List<Map<String, Object>> listItems = new ArrayList<>();
-        for (int i = 0 ; i < 5 ; i++) {
+        for (int i = 0 ; i < 8 ; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put(KEY_NAME , "颜培琦");
-            map.put(KEY_NUM , String.valueOf(i));
+            map.put(KEY_NUM , i);
             listItems.add(map);
         }
 
@@ -75,10 +105,42 @@ public class ListActivity extends AppCompatActivity {
                     intent.putExtra("bundle", bundle);
                     intent.setClass(ListActivity.this, SettingActivity.class);
                     startActivity(intent);
-                } else {
-                    HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
-                    Toast.makeText(ListActivity.this , "姓名:" + map.get(KEY_NAME)
-                            + ",序号:"+map.get(KEY_NUM) , Toast.LENGTH_SHORT).show();
+                } else if (position == 2) {
+                    HashMap<String, Object> map = (HashMap<String, Object>) parent.getItemAtPosition(position);
+                    ItemSelected item = new ItemSelected();
+                    item.setName((String) map.get(KEY_NAME));
+                    item.setPosition((Integer) map.get(KEY_NUM));
+                    Intent intent = new Intent();
+                    intent.putExtra(KEY_ITEM , item);
+
+                    int days = 365;
+                    intent.putExtra(KEY_INT , days);
+
+                    byte b = 12;
+                    intent.putExtra(KEY_BYTE , b);
+                    // 隐式
+                    intent.setAction("infoView");
+                    startActivity(intent);
+                } else if (position == 3){
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, SettingActivity.class);
+                    startActivity(intent);
+                } else if (position == 4) {
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, ContentActivity.class);
+                    startActivity(intent);
+                } else if (position == 5) {
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, ThreadActivity.class);
+                    startActivity(intent);
+                } else if (position == 6) {
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, ServiceActivity.class);
+                    startActivity(intent);
+                } else if (position == 7) {
+                    Intent intent = new Intent();
+                    intent.setClass(ListActivity.this, StartActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -188,5 +250,16 @@ public class ListActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bound) unbindService(serviceConnection);
     }
 }

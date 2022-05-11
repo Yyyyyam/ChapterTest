@@ -18,8 +18,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StartActivity"/>
         <activity android:name=".ListActivity"/>
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".SettingActivity"/>
+        <activity android:name=".ContentActivity"/>
+        <activity android:name=".ThreadActivity"/>
+        <activity android:name=".ServiceActivity"/>
+        <service android:name=".service.MusicService"/>
+        <service android:name=".service.StartService"/>
+        <activity android:name=".InfoActivity">
+            <intent-filter>
+                <action android:name="infoView"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name=".StartBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="cn.edu.neusoft.ypq.chaptertest.AccountContentProvider"
+            android:authorities="cn.edu.neusoft.accountprovider"/>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
